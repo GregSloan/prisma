@@ -1,5 +1,3 @@
-ARG SECRET_KEY
-
 FROM nginx:alpine
 COPY . /usr/share/nginx/html/a/
 COPY ./ssl/* /etc/ssl/certs/
