@@ -12,3 +12,6 @@ To use this repo:
 8. browse to https://content.prismags.com/{super_secret_key_string}/
 9. login with credentials `customer1:mypassword`
 10. Browse to any other location at https://content.prismags.com - receive 500 error
+
+
+TODO: Make key string, host entry, and credentials dynamic at build time.
