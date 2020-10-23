@@ -1,0 +1,26 @@
+version: "3"
+services:
+
+  # reverse proxy
+  node-proxy:
+    image: nginx
+    restart : always
+    # maps config file into the proxy container
+    volumes:
+      - ./node-proxy/default.conf:/etc/nginx/conf.d/default.conf
+      - ./node-proxy/.htpasswd:/etc/nginx/.htpasswd
+      - ./ssl:/etc/ssl/private
+    ports:
+      - 0.0.0.0:80:80
+      - 443:443
+    links:
+      - node-content_web
+    extra_hosts:
+      - "content.prismags.com:34.214.140.165"
+
+  # first site
+  node-content_web:
+    build:  ./content_web
+    ports:
+     - 8080:80
+    restart: always
